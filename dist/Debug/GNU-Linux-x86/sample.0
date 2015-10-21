@@ -1,0 +1,12 @@
+begin
+
+    n := input;
+    while n <> 0 do
+        fib(n);
+        output := result;
+        n := input;
+    end;
+
+end main.
+
+

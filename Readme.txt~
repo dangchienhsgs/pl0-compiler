@@ -1,0 +1,6 @@
+TOKEN ANALYZER CREATED BY DANGCHIENHSGS
+Usage 
+Linux: 
+       ./pl0lexer [path to source] \n (Linux)
+Windows:
+	pl0lexer.exe [path to source]
