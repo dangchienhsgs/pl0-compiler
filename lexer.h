@@ -32,7 +32,7 @@ char specChar[] = {'+', '-', '*', '/', '=', '>', '<', '%', ':', '[', ']', '{', '
 int MAX_IDENT_LENGTH = 100;
 
 typedef enum {
-    SPACE, IDENTCHAR, DIGIT, SPECIAL_CHAR
+    SPACE, IDENTCHAR, DIGIT, SPECIAL_CHAR, NOT_DETECT
 } EnumType;
 
 TokenType getToken();

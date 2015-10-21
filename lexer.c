@@ -4,9 +4,10 @@ char* currentString;
 char c;
 int i, currentLength = 0;
 FILE *f;
-int count_line=1;
+int count_line = 1;
 TokenType token, result, tokenTemp;
 char* filepath;
+char message[100];
 
 void error(char* msg) {
     printf("\n");
@@ -95,16 +96,17 @@ void goBack(FILE* f) {
 }
 
 EnumType detectType(char c) {
-    if (isIdent(c)) return IDENTCHAR;
+    if (isIdent(c)) return IDENTCHAR; 
     if (isSpecialChar(c)) return SPECIAL_CHAR;
     if (isdigit(c)) return DIGIT;
     if (isspace(c) || c == ' ') return SPACE;
+    return NOT_DETECT;
 }
 
 TokenType getToken() {
     // start read a word
     while (!feof(f)) {
-        c = fgetc(f);        
+        c = fgetc(f);
         switch (detectType(c)) {
             case IDENTCHAR:
                 init();
@@ -137,13 +139,13 @@ TokenType getToken() {
                 break;
 
             case SPACE:
-                if (c=='\n') {
+                if (c == '\n') {
                     count_line = count_line + 1;
                 }
                 while ((detectType(c) == SPACE) & (!feof(f))) {
                     c = (char) fgetc(f);
-                    if (c=='\n') {
-                       count_line = count_line + 1;
+                    if (c == '\n') {
+                        count_line = count_line + 1;
                     }
                 }
                 goBack(f);
@@ -237,6 +239,11 @@ TokenType getToken() {
                 }
 
                 return result;
+                break;
+                
+            case NOT_DETECT:                               
+                sprintf(message, "Can not detect special char: %c", c);
+                error(message);
                 break;
         }
     }
@@ -550,7 +557,7 @@ void blockCONST() {
         token = getToken();
         if (token == IDENT) {
             token = getToken();
-            if (token == ASSIGN) {
+            if (token == EQU) {
                 token = getToken();
                 if (token == NUMBER) {
                     token = getToken();
@@ -632,17 +639,25 @@ void program() {
 }
 
 int main(int argc, char* argv[]) {
-    if (argc == 1) {
-        printf ("Usage: ./lexer  [filepath] \n");        
-    } else {
-        filepath = argv[1];
-        init();
-        if (!(f = fopen(filepath, "r"))) {
-            return -1;
-        }
-        token = getToken();
-        program();
-        printf("\n");
-        fclose(f);
-    }    
+//        if (argc == 1) {
+//            printf ("Usage: ./lexer  [filepath] \n");        
+//        } else {
+//            filepath = argv[1];
+//            init();
+//            if (!(f = fopen(filepath, "r"))) {
+//                return -1;
+//            }
+//            token = getToken();
+//            program();
+//            printf("\n");
+//            fclose(f);
+//        }       
+    init();
+    if (!(f = fopen("test/testcode4.pl0", "r"))) {
+        return -1;
+    }
+    token = getToken();
+    program();
+    printf("\n");
+    fclose(f);
 }

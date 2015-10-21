@@ -1,4 +1,5 @@
 Program example2;
+Const x=100;
 Var a, b, c, d[1000];
 Procedure gcd(a; b; Var d);
 Begin
@@ -11,7 +12,6 @@ End;
 Procedure fact;
 Var ans1, t[100];
 Begin    
-$$$
     While Odd 2*(x + 2) Do
     Begin
         x := 2

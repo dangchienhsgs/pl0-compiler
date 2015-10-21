@@ -1,4 +1,5 @@
 Program example2;
+Const x=1000;
 Var a, b, c, d[1000];
 Procedure gcd(a; b; Var d);
 Begin
