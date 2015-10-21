@@ -1,6 +1,6 @@
 Program example2;
+Const x=100;
 Var a, b, c, d[1000];
-Constant X:=100;
 Procedure gcd(a; b; Var d);
 Begin
     While a<>b Do 

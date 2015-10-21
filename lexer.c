@@ -7,6 +7,7 @@ FILE *f;
 int count_line = 1;
 TokenType token, result, tokenTemp;
 char* filepath;
+char message[100];
 
 void error(char* msg) {
     printf("\n");
@@ -95,10 +96,11 @@ void goBack(FILE* f) {
 }
 
 EnumType detectType(char c) {
-    if (isIdent(c)) return IDENTCHAR;
+    if (isIdent(c)) return IDENTCHAR; 
     if (isSpecialChar(c)) return SPECIAL_CHAR;
     if (isdigit(c)) return DIGIT;
     if (isspace(c) || c == ' ') return SPACE;
+    return NOT_DETECT;
 }
 
 TokenType getToken() {
@@ -237,6 +239,11 @@ TokenType getToken() {
                 }
 
                 return result;
+                break;
+                
+            case NOT_DETECT:                               
+                sprintf(message, "Can not detect special char: %c", c);
+                error(message);
                 break;
         }
     }
@@ -550,7 +557,7 @@ void blockCONST() {
         token = getToken();
         if (token == IDENT) {
             token = getToken();
-            if (token == ASSIGN) {
+            if (token == EQU) {
                 token = getToken();
                 if (token == NUMBER) {
                     token = getToken();
@@ -646,7 +653,7 @@ int main(int argc, char* argv[]) {
     //        fclose(f);
     //    }       
     init();
-    if (!(f = fopen("test/testcode3.pl0", "r"))) {
+    if (!(f = fopen("test/testcode4.pl0", "r"))) {
         return -1;
     }
     token = getToken();
