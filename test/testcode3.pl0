@@ -11,6 +11,13 @@ End;
 Procedure fact;
 Var ans1, t[100];
 Begin
+    x:=1+2+3*1+1/23;
+    x:=1*4+((3));
+    x:=1;
+    If x>1 Then
+        Call printf(124)
+    Else 
+        Call printf(123);
     While Odd 2*(x + 2) Do
     Begin
         x := 2

@@ -617,16 +617,16 @@ void program() {
                     printf("\n||    Parsed succesfully !   ||");
                     printf("\n||===========================||");
                 } else {
-                    error(". expected");
+                    error("Expected: . ");
                 }
             } else {
-                error("; expected");
+                error("Expected: ;");
             }
         } else {
-            error("Program name expected");
+            error("Expected: Program does not have a name");
         }
     } else {
-        error("PROGRAM expected");
+        error("Expected: Program");
     }
 
 }

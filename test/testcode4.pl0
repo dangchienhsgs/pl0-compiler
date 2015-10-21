@@ -11,6 +11,7 @@ End;
 Procedure fact;
 Var ans1, t[100];
 Begin    
+$$$
     While Odd 2*(x + 2) Do
     Begin
         x := 2
