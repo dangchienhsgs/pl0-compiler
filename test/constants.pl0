@@ -1,0 +1,8 @@
+Program Fibonaci;
+Const X := 20;
+
+Begin
+    If x >= 10 Then ! 10;
+    IF x >= 20 Then ! 20;
+    IF x >= 30 Then ! 30
+End.

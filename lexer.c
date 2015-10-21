@@ -4,11 +4,12 @@ char* currentString;
 char c;
 int i, currentLength = 0;
 FILE *f;
+int count_line=0;
 TokenType token, result, tokenTemp;
 
 void error(char* msg) {
     printf("\n");
-    printf("%s \n", msg);
+    printf("Error at line %d: %s \n", count_line, msg);
     fclose(f);
     exit(0);
 }
@@ -102,7 +103,7 @@ EnumType detectType(char c) {
 TokenType getToken() {
     // start read a word
     while (!feof(f)) {
-        c = fgetc(f);
+        c = fgetc(f);        
         switch (detectType(c)) {
             case IDENTCHAR:
                 init();
@@ -128,15 +129,21 @@ TokenType getToken() {
                     printf("KEY: %s \n", currentString);
                     return toKey(currentString);
                 } else {
-                    printf("IDENt: %s \n", currentString);
+                    printf("IDENT: %s \n", currentString);
                     return IDENT;
                 }
 
                 break;
 
             case SPACE:
+                if (c=='\n') {
+                    count_line = count_line + 1;
+                }
                 while ((detectType(c) == SPACE) & (!feof(f))) {
                     c = (char) fgetc(f);
+                    if (c=='\n') {
+                       count_line = count_line + 1;
+                    }
                 }
                 goBack(f);
                 continue;
@@ -605,9 +612,9 @@ void program() {
                 token = getToken();
                 block();
                 if (token == PERIOD) {
-                    printf("\n__________________");
-                    printf("\nParsed succesfully");
-                    printf("\n__________________");
+                    printf("\n||===========================||");
+                    printf("\n||    Parsed succesfully !   ||");
+                    printf("\n||===========================||");
                 } else {
                     error(". expected");
                 }
@@ -625,7 +632,7 @@ void program() {
 
 int main() {
     init();
-    if (!(f = fopen("testcode1.pl0", "r"))) {
+    if (!(f = fopen("test/testcode4.pl0", "r"))) {
         return -1;
     }
     token = getToken();

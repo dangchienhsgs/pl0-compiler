@@ -1,0 +1,17 @@
+Program example2;
+Var a, b, c;
+Procedure gcd(a; b; Var d);
+
+Begin
+    While a<>b Do 
+        If a>b Then a:=a-b
+        Else b:=b-a;
+    d:=b;
+End;
+
+Begin 
+    Call Readln(a);
+    Call Readln(b);
+    Call gcd(a, b, c);
+    Call Writeln(c);
+End.
