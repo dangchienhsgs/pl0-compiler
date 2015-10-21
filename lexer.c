@@ -96,7 +96,7 @@ void goBack(FILE* f) {
 }
 
 EnumType detectType(char c) {
-    if (isIdent(c)) return IDENTCHAR; 
+    if (isIdent(c)) return IDENTCHAR;
     if (isSpecialChar(c)) return SPECIAL_CHAR;
     if (isdigit(c)) return DIGIT;
     if (isspace(c) || c == ' ') return SPACE;
@@ -240,8 +240,8 @@ TokenType getToken() {
 
                 return result;
                 break;
-                
-            case NOT_DETECT:                               
+
+            case NOT_DETECT:
                 sprintf(message, "Can not detect special char: %c", c);
                 error(message);
                 break;
@@ -639,25 +639,25 @@ void program() {
 }
 
 int main(int argc, char* argv[]) {
-//        if (argc == 1) {
-//            printf ("Usage: ./lexer  [filepath] \n");        
-//        } else {
-//            filepath = argv[1];
-//            init();
-//            if (!(f = fopen(filepath, "r"))) {
-//                return -1;
-//            }
-//            token = getToken();
-//            program();
-//            printf("\n");
-//            fclose(f);
-//        }       
-    init();
-    if (!(f = fopen("test/testcode4.pl0", "r"))) {
-        return -1;
+    if (argc == 1) {
+        printf("Usage: ./lexer  [filepath] \n");
+    } else {
+        filepath = argv[1];
+        init();
+        if (!(f = fopen(filepath, "r"))) {
+            return -1;
+        }
+        token = getToken();
+        program();
+        printf("\n");
+        fclose(f);
     }
-    token = getToken();
-    program();
-    printf("\n");
-    fclose(f);
+    //    init();
+    //    if (!(f = fopen("test/testcode4.pl0", "r"))) {
+    //        return -1;
+    //    }
+    //    token = getToken();
+    //    program();
+    //    printf("\n");
+    //    fclose(f);
 }
