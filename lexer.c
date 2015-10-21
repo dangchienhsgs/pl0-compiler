@@ -651,13 +651,5 @@ int main(int argc, char* argv[]) {
         program();
         printf("\n");
         fclose(f);
-    }
-    //    init();
-    //    if (!(f = fopen("test/testcode4.pl0", "r"))) {
-    //        return -1;
-    //    }
-    //    token = getToken();
-    //    program();
-    //    printf("\n");
-    //    fclose(f);
+    }   
 }
