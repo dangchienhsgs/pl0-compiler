@@ -13,6 +13,7 @@
       <itemPath>test/testcode2.pl0</itemPath>
       <itemPath>test/testcode3.pl0</itemPath>
       <itemPath>test/testcode4.pl0</itemPath>
+      <itemPath>test/testcode5.pl0</itemPath>
     </logicalFolder>
     <logicalFolder name="SourceFiles"
                    displayName="Source Files"
@@ -53,6 +54,8 @@
       </item>
       <item path="test/testcode4.pl0" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="test/testcode5.pl0" ex="false" tool="3" flavor2="0">
+      </item>
     </conf>
     <conf name="Release" type="1">
       <toolsSet>
@@ -85,6 +88,8 @@
       <item path="test/testcode3.pl0" ex="false" tool="3" flavor2="0">
       </item>
       <item path="test/testcode4.pl0" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="test/testcode5.pl0" ex="false" tool="3" flavor2="0">
       </item>
     </conf>
   </confs>

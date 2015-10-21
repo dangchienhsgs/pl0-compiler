@@ -4,8 +4,9 @@ char* currentString;
 char c;
 int i, currentLength = 0;
 FILE *f;
-int count_line=0;
+int count_line=1;
 TokenType token, result, tokenTemp;
+char* filepath;
 
 void error(char* msg) {
     printf("\n");
@@ -630,13 +631,18 @@ void program() {
 
 }
 
-int main() {
-    init();
-    if (!(f = fopen("test/testcode4.pl0", "r"))) {
-        return -1;
-    }
-    token = getToken();
-    program();
-    printf("\n");
-    fclose(f);
+int main(int argc, char* argv[]) {
+    if (argc == 1) {
+        printf ("Usage: ./lexer  [filepath] \n");        
+    } else {
+        filepath = argv[1];
+        init();
+        if (!(f = fopen(filepath, "r"))) {
+            return -1;
+        }
+        token = getToken();
+        program();
+        printf("\n");
+        fclose(f);
+    }    
 }
